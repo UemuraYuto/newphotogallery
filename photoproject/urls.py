@@ -22,4 +22,7 @@ urlpatterns = [
 
     # photo.urlsへのURLパターン
     path('', include('photo.urls')),
+
+    #accounting.urlsへのURLパターン
+    path('', include('accounts.urls')),
 ]
