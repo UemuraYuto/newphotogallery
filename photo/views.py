@@ -65,11 +65,11 @@ class CreatePhotoView(CreateView):
         return super().form_valid(form)
     
 
-    class PostSuccessView(TemplateView):
-      '''投稿完了ページのビュー
+class PostSuccessView(TemplateView):
+  '''投稿完了ページのビュー
     
-      Attributes:
-      template_name: レンダリングするテンプレート
-      '''
-      # index.htmlをレンダリングする
-      template_name ='post_success.html'
+  Attributes:
+  template_name: レンダリングするテンプレート
+  '''
+  # index.htmlをレンダリングする
+  template_name ='post_success.html'
