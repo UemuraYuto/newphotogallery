@@ -133,3 +133,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Userモデルの代わりにCustomUserモデルを使用する
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+#メール送信の為のクラスを設定
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# メールサーバへの接続設定
+DEFAULT_FROM_EMAIL = 'toshiyakinjo@gmail.com'  # メールの送信元のアドレスを入力
+EMAIL_HOST = 'smtp.gmail.com'                  # GmailのSMPTサーバー　　　
+EMAIL_PORT = 587                               # SMPTサーバーのポート番号
+EMAIL_HOST_USER = 'toshiyakinjo@gmail.com'     # Gmailのアドレスを入力
+EMAIL_HOST_PASSWORD = 'bbwwhatohmcgbguy'       # Gmailのアプリ用パスワードを入力
+EMAIL_USE_TLS = True                           # SMTP サーバと通信する際に TLS (セキュア) 接続を使う
+
+# mediaフォルダーの場所(BASE_DIR以下のmedia)を登録
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# mediaのURLを登録
+MEDIA_URL = '/media/'
