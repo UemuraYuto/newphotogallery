@@ -11,13 +11,18 @@ from .forms import PhotoPostForm
 from django.utils.decorators import method_decorator
 # login_requiredをインポート
 from django.contrib.auth.decorators import login_required
+# modelsモジュールからモデルPhotoPostをインポート
+from .models import PhotoPost
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     '''トップページのビュー
     '''
     # index.htmlをレンダリングする
     template_name ='index.html'
+    # モデルBlogPostのオブジェクトにorder_by()を適用して
+    # 投稿日時の降順で並べ替える
+    queryset = PhotoPost.objects.order_by('-posted_at')
     
 
 # デコレーターにより、CreatePhotoViewへのアクセスはログインユーザーに限定される
