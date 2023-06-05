@@ -32,5 +32,14 @@ urlpatterns = [
          views.UserView.as_view(),
          name = 'user_list'
          ),
+
+
+    # 詳細ページ
+    # photo-detail/<Photo postsテーブルのid値>にマッチング
+    # <int:pk>は辞書{pk: id値(int)}としてDetailViewに渡される
+    path('photo-detail/<int:pk>',
+         views.DetailView.as_view(),
+         name = 'photo_detail'
+         ),
     
 ]
