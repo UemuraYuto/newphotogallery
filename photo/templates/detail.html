@@ -24,8 +24,17 @@
             {% if object.image2 %}
               <p><img src="{{ object.image2.url }}"></img></p>
             {% endif %}
+
+            <!-- 投稿写真がログイン中のユーザーのものであれば削除ボタンを表示-->
+            {% if request.user == object.user %}
+            <form method="POST">
+            <!-- リンク先のURL
+                 photo/<Photo postsテーブルのid値>/delete/-->
+            <a href="{% url 'photo:photo_delete' object.pk %}"
+               class="btn btn-primary my-2">削除する</a>
+            {% endif %}
             
-          </dv>
-        </dv>
-      </dv>
+          </div>
+        </div>
+      </div>
       {% endblock %}
