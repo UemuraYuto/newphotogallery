@@ -152,3 +152,31 @@ class DetailView(DetailView):
     template_name ='detail.html'
     # クラス変数modelにモデルBlogPostを設定
     model = PhotoPost
+
+class MypageView(ListView):
+    '''マイページのビュー
+    
+    Attributes:
+      template_name: レンダリングするテンプレート
+      paginate_by: 1ページに表示するレコードの件数
+    '''
+    # mypage.htmlをレンダリングする
+    template_name ='mypage.html'
+    # 1ページに表示するレコードの件数
+    paginate_by = 9
+
+    def get_queryset(self):
+      '''クエリを実行する
+      
+      self.kwargsの取得が必要なため、クラス変数querysetではなく、
+      get_queryset（）のオーバーライドによりクエリを実行する
+      
+      Returns:
+        クエリによって取得されたレコード
+      '''
+      # 現在ログインしているユーザー名はHttpRequest.userに格納されている
+      # filter(userフィールド=userオブジェクト)で絞り込む
+      queryset = PhotoPost.objects.filter(
+        user=self.request.user).order_by('-posted_at')
+      # クエリによって取得されたレコードを返す
+      return queryset
